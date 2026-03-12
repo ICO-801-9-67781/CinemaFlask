@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Cinema</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="background-overlay">
+        <div class="main-content">
+            
+            <header class="main-header">
+                <div class="title-box">Cinema</div>
+            </header>
+
+            <form method="POST" class="interface-grid">
+                
+                <fieldset class="section-box">
+                    <legend>Entradas</legend>
+                    <div class="input-group">
+                        <label>Nombre</label>
+                        <input type="text" name="nombre" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Cantidad Compradores</label>
+                        <input type="number" name="compradores" min="1" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Tarjeta Cineco</label>
+                        <div>
+                            <input type="radio" name="cineco" value="si" id="si"> Sí
+                            <input type="radio" name="cineco" value="no" id="no" checked> No
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Cantidad De Boletas</label>
+                        <input type="number" name="boletas" min="1" max="100" required>
+                    </div>
+                </fieldset>
+
+                <fieldset class="section-box">
+                    <legend>Salidas</legend>
+                    <div class="input-group">
+                        <label>Valor a Pagar</label>
+                        <input type="text" readonly value="${{ '{:,.0f}'.format(resultado.total) if resultado else '' }}">
+                    </div>
+                </fieldset>
+
+                <fieldset class="section-box actions">
+                    <legend>Acciones</legend>
+                    <div style="display: flex; justify-content: space-around;">
+                        <button type="submit" class="btn">Procesar</button>
+                        <a href="/" class="btn">Salir</a>
+                    </div>
+                </fieldset>
+
+            </form>
+        </div>
+    </div>
+</body>
+</html>
